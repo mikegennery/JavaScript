@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>JavaScript and Events</title>
+		<link rel="stylesheet" href="styles.css" >
+	</head>
+	<body>
+		<!-- Completed -->
+
+		<h1>JavaScript and Events</h1>
+		<h2></h2>
+		<a href="https://www.youtube.com/watch?v=tY5VCCb5gWU">YOUTUBE</a>
+		<p></p>
+		<button id="increase" class="stdButton" onclick="increment()" >INCREMENT</button> 
+		<button id="hello" class="stdButton" onclick="sayHello()" >Hello</button> 
+		<button class="stdButton" onclick="startANDstop(true)" >START</button> 
+		<button class="stdButton" onclick="startANDstop(false)" >STOP</button> 
+		<button id="status" class="stdButton" onclick="trueLove()" value="True Love" >?</button> 
+		<button id="goodbye" class="stdButton" value="Good Bye" onclick="console.log('Good Bye!')">BYE</button> 
+		<button class="stdButton" value="START" onclick="startANDstop2(this)" >START</button>
+		<button id="button3" class="stdButton" value="START" onclick="startANDstop3(this)" >START</button>
+		<button id="increase3" class="stdButton" onclick="increment3()" >INCREMENT 3</button> 
+		<button id="increase4" class="stdButton" onclick="run()" >INCREMENT 4</button> 
+
+		<h2>INCREMENT</h2>
+		<p id="display"></p>
+		<h2>INCREMENT 2</h2>
+		<p id="display2"></p>
+		<h2>INCREMENT 3</h2>
+		<p id="display3"></p>
+		<h2>COUNTERS</h2>
+		<p id="counter"></p>
+		<p id="greeting"></p>
+		<p id="presentTime"></p>
+		
+	</body>
+		<script>
+
+			let number = 0;
+			let number2 = 0;
+			let number3 = 0;
+			cupid = ['She Loves Me','She Loves Me Not'];
+			intervalID = 0;
+
+			const timeOut = setTimeout(startANDstop3, 15000, button3, true);
+
+			increase.onclick = increment;
+			hello.onclick = sayHello;
+			goodbye.onclick = console.log; // Comment this out to see Good Bye! in the console log instead of the event
+			startANDstop(true);
+			// setInterval(theTime, 1000);
+			setInterval(() => presentTime.innerText = Date(), 1000); // ES6
+
+			waitTime = 1000;
+			num = [0, 0, 0];
+			let numInterval = [2000,1000,500]; // Try with different values
+					
+			function theTime()
+			{
+				document.getElementById("presentTime").innerHTML = Date();
+			}			
+			
+			function sayHello()
+			{
+				document.getElementById("greeting").innerHTML += 'Hello There! ';
+			}			
+
+			function increment()
+			{
+				console.log("Start " + Date().substr(16,8));
+				number++;
+				document.getElementById("display").innerHTML = number;
+				console.log("End " + Date().substr(16,8));
+			}
+
+			function increment2(step = 1)
+			{
+				number2 += step;
+				document.getElementById("display2").innerHTML = number2;
+			}
+
+			function increment3()
+			{
+				console.log("increment3() Start " + Date().substr(16,8));
+				number3++;
+				for (end = Date.now() + waitTime; end > Date.now();) {} // Pause
+				document.getElementById("display3").innerHTML = number3;
+				console.log("increment3() End " + Date().substr(16,8));
+			}
+
+			function run()
+			{
+				if(!num[0])
+				{
+					for (let i = 0; i < numInterval.length; i++)
+					{
+						num[i] = setInterval(next, numInterval[i], i);
+					}
+					document.getElementById("increase4").innerHTML = "Running";
+				} else
+				{
+					for (let i = 0; i < num.length; i++)
+					{
+						clearInterval(num[i]);
+						numInterval[i] = false;
+					}
+					document.getElementById("increase4").innerHTML = "Stopped";
+				}		
+			}
+
+
+			function next(incrementID)
+			{
+				console.log("next() " + incrementID + " Start " + Date().substr(16,8));
+
+				num[incrementID]++;
+				num[incrementID] %= num.length;
+				
+				if (incrementID == 0)
+				{
+					for (end = Date.now() + waitTime; end > Date.now();) {} // Pause
+				}
+
+				document.getElementById("counter").innerHTML = num;
+
+				console.log("next() " + incrementID + " End   " + Date().substr(16,8));
+			}
+
+			function startANDstop(state)
+			{
+				if (state)
+					intervalID = setInterval(increment, 2000);
+				else
+					clearInterval(intervalID);
+			}
+
+			function startANDstop2(status)
+			{
+				if (!intervalID)
+				{
+					intervalID = setInterval(increment, 2000);
+					status.value = "Running";
+					status.innerHTML = "Running";
+				}
+				else
+				{
+					clearInterval(intervalID);	
+					intervalID = false;	
+					status.value = "Stopped";
+					status.innerHTML = "Stopped";
+				}
+		
+			}
+
+			function startANDstop3(status, start)
+			{
+				if (start)
+				{
+					clearInterval(intervalID);	
+					intervalID = setInterval(increment2, 2000, -1);	
+					status.value = "Backwards";	
+					status.innerHTML = "Backwards";								
+				}
+				else if (!intervalID)
+				{
+					intervalID = setInterval(increment2, 2000, 1);
+					status.value = "Forwards";
+					status.innerHTML = "Forwards";
+				}
+				else
+				{
+					clearInterval(intervalID);	
+					intervalID = false;	
+					status.value = "Stopped";
+					status.innerHTML = "Stopped";
+				}
+		
+			}
+
+			function trueLove()
+			{
+				number++;
+				number %= cupid.length;
+				document.getElementById("status").innerHTML = cupid[number];
+			}
+
+			// All verified and confirmed as working
+
+		</script>
+</html>

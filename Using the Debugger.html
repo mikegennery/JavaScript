@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Using the Debugger</title>
+		<link rel="stylesheet" href="styles.css" >
+	</head>
+	<body>
+		<h1>Using the Debugger</h1>
+		<h2></h2>
+		<p></p>
+		<p id="today"></p>
+
+		<a href="https://www.youtube.com/watch?v=B38dQEeaN8I">YOUTUBE</a>
+
+		<p>Enter number of Xs: </p>	
+
+		<input type="number" id="numX" name="numX" onblur="printX()" />
+
+		<p id="outputX"></p>
+		<p>Time Taken:</p>
+		<p id="timeTaken" name="timeTaken"></p>	
+
+		<p>DATE:</p>
+		<p id="dateUTC" name="dateUTC"></p>	
+		<p>DAY:</p><p id="tDay" name="tDay"></p>		
+		<p>MONTH:</p><p id="tMonth" name="tMonth"></p>
+		<p>YEAR:</p><p id="tYear" name="tYear"></p>
+
+		<h2>TABLE</h2>
+		<p id="numTable" name="numTable"></p>	
+
+		<p>Enter number of rows: </p>
+
+		<input type="number" id="numRows" name="numRows" onblur="printTable()" />
+
+		<p>Enter number of columns: </p>	
+
+		<input type="number" id="numCols" name="numCols" onblur="printTable()" />
+
+		<!-- Complete -->
+		<style>
+			table, tr, td
+			{
+				border: 2px solid;
+				border-color: black;
+			}
+
+			input
+			{
+				background-color: azure;
+				width: 100px;
+			}
+		</style>
+		<script async>
+			document.getElementById("today").innerHTML = Date();
+
+			function printX()
+			{
+				var x = 0;
+				var strX = "";
+				var outputTime = "";
+				var number = document.getElementById("numX").value;
+
+				theStart = Date.now();
+
+				for (x = 0; x < number; x++)
+				{
+					strX += "X";
+				}
+
+				theEnd = Date.now() - theStart;
+
+				document.getElementById("outputX").innerHTML = strX;
+				document.getElementById("timeTaken").innerHTML = theEnd;	
+				numX.parentElement.children[9].innerHTML = theEnd + 10;	
+
+				thisDay = new Date();
+				numX.parentElement.children[11].innerHTML = thisDay.toUTCString();
+
+				tDay = thisDay.getDate();
+				tMonth = thisDay.getMonth();
+				tYear = thisDay.getFullYear();
+				document.getElementById("tDay").innerHTML = tDay;
+				document.getElementById("tMonth").innerHTML = tMonth + 1; // January is 0
+				document.getElementById("tYear").innerHTML = tYear;
+			}
+			
+			function printTable()
+			{
+
+				<!-- Build a Table -->
+
+				var numTable = "<table>";
+
+				hor = document.getElementById("numRows").value -1;
+				vert = document.getElementById("numCols").value -1;
+
+				for (h = 0; h <= hor; h++)				
+				{
+					numTable += "<tr>";
+					for (v = 0; v <= vert; v++)
+					{
+						numTable += "<td> Row: " + h + " Col: " + v + " </td>";
+					}
+					numTable += "</tr>";
+				}
+
+				numTable += "</table>";	
+				document.getElementById("numTable").innerHTML = numTable;
+			}	
+		</script>
+	</body>
+</html>

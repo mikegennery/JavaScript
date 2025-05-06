@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Object and Variable Scopes</title>
+		<link rel="stylesheet" href="styles.css" >
+	</head>
+	<body>
+		<h1>Object and Variable Scopes</h1>
+		<h2></h2>
+
+		<a href="https://www.youtube.com/watch?v=ZGYDoEQAH00">YOUTUBE</a>
+		<p id="outputInside"></p>
+		<p id="outputOutside"></p>
+		<p id="outputCircle"></p>
+		<p id="outputCount"></p>
+		<p id="outputOnion"></p>
+		<p id="outputFunction"></p>
+		<p id="error"></p>
+		<p id="outputUK"></p>
+		<p id="outputUK1"></p>
+		<p id="outputUK2"></p>
+		<p id="outputUK3"></p>
+		<p id="outputForLoop"></p>
+
+		<script>
+		// jsajax.000webhostapp.com
+
+		// 'use strict'
+		// Strict mode gives you an error if you bend the rules
+
+		function add5()
+		{
+			total += 5;
+			outputInside.innerHTML += "Total is now " + total + " inside of the function, ";
+
+
+			total2 += 5;
+			outputInside.innerHTML += "Total2 is now " + total2 + " inside of the function, ";
+
+
+			var total3 = 5; // var keeps total inside the function
+			total3 += 5;
+			outputInside.innerHTML += "Total3 is now " + total3 + " inside of the function, ";
+		}	
+
+		function add10(total)
+		{
+			total += 5;
+			outputInside.innerHTML += "Total is now " + total + " inside of the new function, ";
+		}
+
+		function times10(total)
+		{
+			total4[0] *= 10;
+			outputInside.innerHTML += "Total is now " + total + " inside of the new function, ";
+		}
+			
+		function circle(radius)
+		{
+			let diameter = radius * 2;
+			var circumference = diameter * PI;
+			outputCircle.innerHTML += "Diameter of circle: " + diameter + ", Circumference of Circle: " + circumference + " inside of the function.\n";
+		}
+
+		function onion(layers)
+		{
+			for (layer = 1; layer <= layers; layer++)
+			{
+				outputOnion.innerHTML += "Layer: " + layer + ". ";
+			}			
+		}
+
+		function underLine(text)
+		{
+			return '<u>' + text + '</u>';
+		}
+
+		function boldText(text)
+		{
+			return '<b>' + text + '</b>';
+		}
+
+		function addCapital(UK, myCountry, myTown)
+		{
+			UK[myCountry] = myTown;
+			myCountry = " Done"; // Local variables that are changed
+			myTown = " Done";
+			outputUK.innerHTML += UK + myTown + ". ";
+		}
+
+		function printUK(UK)
+		{
+			var result = '';
+			Object.keys(UK).forEach(function(key)
+			{
+				result += 'The capital of ' + key + ' is ' + UK[key] + '.\n'; 
+			});
+			return result;
+		}
+
+		// END OF FUNCTIONS
+
+		var total = 20;
+		total2 = 20;
+		total3 = 20;
+
+		var total4 = [];
+		total4[0] = 5;
+
+		try
+		{
+			outputOutside.innerHTML += "Totals are now " + total + ", " + total2 + " and " + total3 + " outside of the function.";
+		} catch (e)
+		{
+			error.innerHTML += "Error: " + e;
+		}
+
+		add5();
+
+		outputOutside.innerHTML += " ADD5: Totals are now " + total + ", " + total2 + " and " + total3 + " outside of the function.";
+
+		add10(total);
+
+		outputOutside.innerHTML += " ADD10: Totals are now " + total + ", " + total2 + " and " + total3 + " outside of the function.";
+
+		add10(total4[0]);
+
+		outputOutside.innerHTML += " ADD10: Totals are now " + total + ", " + total2 + ", " + total3 + " and " + total4[0] + " outside of the function.";
+
+		// CIRCLE
+
+		let radius = 5;
+		const PI = 3.142;
+		circle(radius);
+		circumference = 10; // This demonstrates that the calculated circumference only has local scope
+		onion(circumference);
+
+		try
+		{
+			outputCircle.innerHTML += "Diameter of circle: " + diameter + ", Circumference of Circle: " + circumference + " inside of the function.";
+		} catch (e)
+		{
+			error.innerHTML += "Error: " + e + ". ";
+		}
+
+		try
+		{
+			PI *= 2;
+			outputCircle.innerHTML += "PI is now: " + PI + " inside of the function.";
+		} catch (e)
+		{
+			error.innerHTML += "Error: " + e + ". ";
+		}
+
+		// FOR LOOP
+
+		for (let count = 0; count <= 10; count++)
+		{
+			outputCount.innerHTML += count + ", ";
+		}
+
+		try
+		{
+			outputCount.innerHTML += count + ", ";
+		} catch (e)
+		{
+			error.innerHTML += "Error: " + e + ". ";
+		}
+
+		// Present Function
+
+		thisFunction = underLine;
+		outputFunction.innerHTML += thisFunction("This text has been underlined.");
+
+		thisFunction = boldText;
+		outputFunction.innerHTML += thisFunction(" This text is in Bold. ");
+		
+		// Capitals
+
+		var UK = {'England': 'London','Wales': 'Cardiff'};
+
+		outputUK1.innerHTML = printUK(UK);
+
+		myTown = 'Edinburgh'; // Global variables that are not changed
+		myCountry = 'Scotland';
+		addCapital(UK, myCountry, myTown);
+		outputUK.innerHTML += myTown + ", " + myCountry + " has been added. ";
+
+		outputUK2.innerHTML = printUK(UK);
+
+		myTown = 'Belfast'; // Global variables that are not changed
+		myCountry = 'Northern Ireland';
+		addCapital(UK, myCountry, myTown);
+		outputUK.innerHTML += myTown + ", " + myCountry + " has been added. ";
+
+		outputUK3.innerHTML = printUK(UK);
+
+		for (let i = 0; i < 4; i++)
+		{
+			outputForLoop.innerHTML += "(" + i + " - ";
+
+			for (let i = 0; i < 4; i++)
+			{
+				outputForLoop.innerHTML += i + " ";
+			}
+
+			outputForLoop.innerHTML += ") ";
+		}
+
+		</script>
+	</body>
+</html>

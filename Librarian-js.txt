@@ -1,0 +1,3 @@
+import Book from "Book.js";
+const Catch22 = new Book("Catch-22","Joseph Heller","Fiction","Drama",1961);
+Catch22.displayBook();

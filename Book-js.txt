@@ -1,0 +1,31 @@
+class Book
+{
+	constructor
+	(
+		name,
+		author,
+		type, // Fiction or Non-Fiction
+		genre,
+		year // Year of publication
+	)
+	{
+		this.name = name;
+		this.author = author;
+		this.type = type; // Fiction or Non-Fiction
+		this.genre = genre;
+		this.year = year; // Year of publication
+	}
+	displayBook()
+	{
+		console.log(		
+			name,
+			author,
+			type, // Fiction or Non-Fiction
+			genre,
+			year // Year of publication
+			);
+	}
+}
+
+export default Book;
+						

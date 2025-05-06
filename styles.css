@@ -1,0 +1,292 @@
+/*
+
+CSS Essential Training
+COURSE
+Course
+
+LinkedIn
+By: Christina Truong
+Oct 2019
+
+Sections
+
+Global
+Header
+Main
+Sections
+Footer
+etc.
+
+Margin Collapsing - Bottom margin of top element is also top margin of bottom element
+-ve margins - elements can overlap
+
+Genric Font Family names
+
+serif
+sans-serif
+cursive
+fantasy
+monospace
+
+https://codepen.io/christinatruong/
+
+https://www.cssfontstack.com/
+https://www.fontsquirrel.com/tools/webfont-generator
+https://fonts.adobe.com/
+https://fonts.google.com/
+https://developer.mozilla.org/en-US/docs/Web/CSS/font-size
+https://developer.mozilla.org/en-US/docs/Web/CSS/font
+
+1em = inherited font size
+rem - relative to the root element
+
+https://css-tricks.com/snippets/css/clear-fix/
+https://caniuse.com/
+
+*/
+
+@font-face
+{
+	font-family: "My Font";
+	src: url() format();
+}
+
+body
+{
+	background-color: lightgrey;
+	font-size: 20px;
+	line-height: 1.5;
+	font-family: "My Font", Helevetica, Arial, sans-serif;
+	font-weight: 100;
+	color: #000000;
+	margin: 10px auto;
+	padding: 10px; 
+}
+
+a
+{
+	color: #ffe66d;	
+	font-weight: bolder;
+	font-style: italic;
+	padding: 10px;
+	margin: 10px;
+	border-radius: 10px;
+	display: inline-block;
+}
+
+p
+{
+	font: 12px/1.5 Helvetica;
+	font-size: 1.5em;
+	line-height: 1;
+	font-weight: 700;
+	text-decoration: underline red solid;
+	text-align: left;
+	/* color: rgb(180, 0, 0, 75%); */
+	color: hsl(270deg, 80%, 0%);
+}
+
+.title
+{
+	float: left;
+}
+
+#book
+{
+
+	overflow: hidden;
+	display: flow-root;
+	clear: both /* clear left and right float */
+
+	/* CLEAR FIX HACK */
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.data
+{
+	display: inline;
+	float: left;
+}
+
+img
+{
+	width: 300px;
+}
+
+h1
+{
+	line-height: 1;
+}
+
+h1, h2, h3
+{
+	font-weight: bold!important; /* This style takes precedence */
+	font-size: 30px;
+	text-align: center;
+	font-weight: 100;
+	margin: 0;
+}
+
+#menu
+{
+	display: grid;
+	gap: 10px 10px;
+	justify-content: space-evenly;	
+	align-content: center;
+}
+
+.stdButton
+{
+	width: auto;
+	padding: none;
+	color: darkblue;	
+}
+
+a:link
+{
+	background-color: #111111;
+}
+
+a:visited
+{
+	background-color: #222222;
+}
+
+a:hover
+{
+	text-decoration: none;
+	background: rgba(47,48,97,80%);
+}
+
+button:hover
+{
+	background-color: #333333;
+}
+
+button:focus
+{
+	background-color: #FF0000;
+}
+
+button:active
+{
+	background-color: #444000;
+}
+
+h1.heading.heading2
+{
+	background: white;
+	font-size: 50px;
+	color: black;
+	font-weight: lighter;
+}
+
+h1
+{
+	border-style: double;
+	width: 500px;
+	display: inline-block; /* Align with padding and margin unlike block */
+	margin: 0px auto;
+	padding: 10px; 
+	background: lightBlue;
+	border-color: blue;
+	color: darkblue;
+}
+
+
+/* Comments 
+
+Absolute <length>
+Always the same size, not affected by values in related elements
+px, cm, mm, pt
+
+Relative <length>
+Not fixed
+Dependant on values declared in parent / ancestor elements
+em, rem, vw, vh
+
+All elements
+
+For inline elements, width and height have no effect unless you set display property to block or inline block
+
+*
+{
+
+}
+
+Precedence of CSS Selectors
+
+1. Universal (*)
+2. type (P)
+3. class .
+4. id # - Overrides all of the above. Highest precedence
+
+padding and margins 
+- one value - all sides
+- top, right, bottom, left
+- top and bottom, right and left
+- top, right and left, bottom
+
+*/
+
+button
+{
+	border-radius: 10px;
+	border: 3px solid #808080;
+	padding: 10px;
+	font-size: 1em;
+	background-color: #f2c33c;
+	color: #000000; /* Black */
+}
+
+button:hover
+{
+	background-color: #7cc272;
+	color: #333333;
+}
+
+.hidden
+{
+	display: none;
+}
+
+.showing
+{
+	display: block;
+	font-family: Arial, sans-serif;
+	background-color: #509fcb;
+	color: #000000; /* Black */
+	width: 400px;
+	padding: 20px;	
+	margin-top: 20px;
+	border-radius: 10px;	
+}
+
+
+@media only screen and (min-width: 300px)
+{
+	#menu
+	{
+		grid-template-columns: auto auto;
+	}
+}
+
+@media only screen and (min-width: 700px)
+{
+	#menu
+	{
+		grid-template-columns: auto auto auto;
+	}
+}
+
+@media only screen and (min-width: 900px)
+{
+	#menu
+	{
+		grid-template-columns: auto auto auto auto auto auto auto;
+	}
+}
+
+

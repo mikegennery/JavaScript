@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Callbacks and Promises</title>
+		<link rel="stylesheet" href="styles.css" >
+	</head>
+	<body>
+		<h1>Callbacks and Promises</h1>
+		<h2></h2>
+		<p id="promise"></p>
+		<p id="calback"></p>
+		<script>
+
+		wait4Me();
+		getOnWithIt();
+
+		function getOnWithIt()
+		{
+			document.getElementById("promise").innerHTML = "All done!";
+			console.log("All done!");
+		}
+
+		function wait4Me()
+		{
+			var p = 0;
+			do { p++ } while (p < 4000000000);
+			document.getElementById("calback").innerHTML = "Wait for me!";
+			console.log("Wait for me!");
+		}
+		
+		</script>
+	</body>
+</html>

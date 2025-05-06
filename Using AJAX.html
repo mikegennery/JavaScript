@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Using AJAX</title>
+		<link rel="stylesheet" href="styles.css" >
+	</head>
+	<body>
+		<h1>Using AJAX</h1>
+		<p></p>
+		<a href="https://www.youtube.com/watch?v=uhN5l-FUkA8">YOUTUBE-1</a>
+		<a href="https://www.youtube.com/watch?v=19PShjgHrcg">YOUTUBE-2</a>
+		<script>
+
+// Part 1 - Complete
+// Part 2 - Complete
+
+var text = "The quick brown fox jumped over the lazy dog";
+
+/*
+
+JSON.parse(text); // Convert text to a JavaScript object.
+
+JSON.stringify(JSobject); // Convert JavaScript Object to neatly formatted output with indentation
+
+Look at Network and Headers, Preview, Clear, Disable cache, drop down list next to it
+
+function sendpost(url, success, failure, uploadprogressmessage, downloadprogressmessage) {}
+
+AJAXrequestObject.
+onerror
+ontimeout
+onprogress
+upload.onprogress
+open("POST", url)
+response
+setRequestHeader
+send
+
+console.error("Error Message!");
+
+*/
+
+		let AJAXrequestObject = XMLHttpRequest();
+		AJAXrequestObject.onreadystatechange = aChange();
+
+		function aChange()
+		{
+			console.log('There has been a change: ' + this.readyState);
+
+			if(this.readyState == 4) // Done
+			{
+				if (this.status == 200) // OK
+				{
+					if (this.response['Status'] == 'OK') // OK
+					{
+						console.log('Everything is good!');
+					} else
+					{
+						console.error('Everything is not good! ' + this.response['Status']);
+					}
+				} else
+				{
+					console.error('Everything is not good! ' + this.response['Status']);
+				}
+			}
+		}
+		
+		</script>
+	</body>
+</html>
+

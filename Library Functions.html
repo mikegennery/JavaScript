@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Library Functions</title>
+		<link rel="stylesheet" href="styles.css" >
+	</head>
+	<body>
+
+		<h1>Library Functions</h1>
+		
+		<p><a href="https://www.youtube.com/watch?v=wH0AktTFvPM">YOUTUBE</a></p>
+		
+		<h2>Change Case</h2>
+		<p>Enter some text: </p>
+		<input type="text" name="myString" id="myString" onblur="changeCase(this)" />
+
+		<p>Text Length: </p>	<p id="strLen"></p>		
+		<p>UPPERCASE: </p>		<p id="strUpper"></p>	
+		<p>lowercase: </p>		<p id="strLower"></p>
+
+		<h2>Change Text</h2>
+		<p>Enter some text: </p>
+		<input type="text" id="myString2" value="" 
+			onkeyup="change(this,'ONKEYUP')" 
+			onchange="change(this,'ONCHANGE')" 
+			ondrop="change(this,'ONDROP')" 
+			oninput="change(this,'ONINPUT')" 
+			onblur="change(this,'ONBLUR')" 
+			/>
+				
+		<p id="output"></p>
+		
+		<h2>Sub Text</h2>
+		<p>Enter some text: </p>	
+
+		<input type="text" id="myString3" value= "" onkeyup="sText()">.substr
+		(
+			<input type="number" id="begin" value= "0" onchange="sText()">,
+			<input type="number" id="length" value= "0" onchange="sText()">
+		)
+		
+		<p id="output2"></p>
+
+		<input type="text" id="myString4" value= "" onkeyup="sText2()">.substring
+		(
+			<input type="number" id="begin2" value= "0" onchange="sText2()">,
+			<input type="number" id="end" value= "0" onchange="sText2()">
+		)
+
+		<p id="output3"></p>	
+
+		<h2>Start and End</h2>
+		
+		<p>Enter search text: </p>
+		<input type="text" name="myString5" id="myString5" onblur="sText3()" />
+		
+		<p>Enter main text: </p>
+		<input type="text" name="mainString" id="mainString" onblur="sText3()" />
+
+		<p id="output4"></p>	
+		
+		<h2>Debugger</h2>
+		
+		<p>Enter debugger text (for the console): </p>
+		<input type="text" name="debugText" id="debugText" value="" onkeyup="logToConsole(this)" />
+
+		<h2>REGEX</h2>
+		
+		<p>Enter sort-code (for the REGEX): </p>
+		<input type="text" name="regexText" id="regexText" value="" maxlength="8" pattern="[0-9]{2}[-][0-9]{2}[-][0-9]{2}" />
+
+		<p>Enter account number (for the REGEX): </p>
+		<input type="text" name="regexText2" id="regexText2" value="" maxlength="8" onblur='checkRegex(this,"[0-9]{8}")' />
+		
+		<p><a href="https://www.debuggex.com">DEBUGGEX</a></p>
+		<p><a href="https://www.debuggex.com/cheatsheet/regex/javascript">Cheat Sheet</a></p>	
+
+		<style>
+		
+			input#regexText:valid
+			{
+				background-color: green;
+			}
+			
+			input#regexText:invalid
+			{
+				background-color: red;
+			}
+		
+		</style>
+		<script>
+		
+			function changeCase()
+			{
+				myStr = document.getElementById("myString").value;
+				strLen = myStr.length;
+				strUpp = myStr.toUpperCase();
+				strLow = myStr.toLowerCase();	
+				document.getElementById("strLen").innerHTML = strLen;
+				document.getElementById("strUpper").innerHTML = strUpp;
+				document.getElementById("strLower").innerHTML = strLow;
+			}
+
+			function change(element, event)
+			{
+				myStr = element.value;	
+				output = document.getElementById("output").innerHTML 
+					= event + " -> " + myStr + "'\n";
+			}
+
+			function sText()
+			{
+				myStr = document.getElementById("myString3").value.trim();		
+				begin = document.getElementById("begin").value;	
+				length = document.getElementById("length").value;				
+				outputText = myStr.substr(begin,length);
+				document.getElementById("output2").innerHTML = outputText;	
+			}
+
+			function sText2()
+			{
+				myStr = document.getElementById("myString4").value.trim();		
+				begin = document.getElementById("begin2").value;	
+				end = document.getElementById("end").value;				
+				outputText = myStr.substring(begin,end);
+				document.getElementById("output3").innerHTML = outputText;	
+			}
+
+			function sText3()
+			{
+				myStr = document.getElementById("myString5").value;
+				mainStr = document.getElementById("mainString").value;				
+				startsWith = mainStr.startsWith(myStr);	
+				endsWith = mainStr.endsWith(myStr);			
+				
+				outputText = document.getElementById("output4");
+				
+				if (startsWith)
+				{
+					displayText = mainStr + " does start with " + myStr;
+				} else
+				{	
+					displayText = mainStr + " does not start with " + myStr;
+				}
+					
+				if (endsWith)
+				{
+					displayText2 = mainStr + " does end with " + myStr;
+				} else
+				{	
+					displayText2 = mainStr + " does not end with " + myStr;
+				}
+				
+				outputText.innerHTML = displayText + " and " + displayText2;
+
+			}	
+
+			function logToConsole()
+			{
+				myStr = document.getElementById("debugText").value;
+				console.log(myStr);
+			}
+
+			function checkRegex(regexText,regexCode)
+			{
+				if (regexText.value.length == 0)
+				{
+					regexText.style.backgroundColor='white';
+					return false;
+				} else
+				if (regexText.value.match(regexCode))
+				{
+					regexText.style.backgroundColor='blue';
+					return true;
+				} else
+				{
+					regexText.style.backgroundColor='orange';
+					return true;
+				}
+			}
+				
+				
+			
+			
+		</script>
+	</body>
+</html>

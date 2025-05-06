@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Codepen</title>
+		<link rel="stylesheet" href="styles.css" >
+	</head>
+	<body>
+	
+	<section class="hidden" >
+ 		<h1>My name is Michael.</h1>
+  		<p>I work for ZF, Pontypool.</p>
+	</section>
+
+	<button class="clickme">Say Hello</button>
+
+	<script>
+
+		// Make 3 changes - flatuicolors.com
+
+		document.querySelector(".clickme").addEventListener("click", () => 
+		{
+			document.querySelectorAll(".hidden").forEach(item => 
+			{
+				item.classList.toggle("showing");
+			} );
+		} );
+
+		document.querySelector(".clickme").addEventListener("click", () => 
+		{
+			document.querySelectorAll(".showing").forEach(item => 
+			{
+				item.classList.toggle("hidden");
+			} );
+		} );
+
+		</script>
+
+	</body>
+</html>

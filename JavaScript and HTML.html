@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>JavaScript and HTML</title>
+		<link rel="stylesheet" href="styles.css" >
+	</head>
+	<body onload="goodMorning()" >
+		<script>
+			console.log("Start of HTML");
+		</script>
+		<h1>JavaScript and HTML</h1>
+		<h2></h2>
+		<p></p>
+		<!-- Complete -->
+		<a href="https://www.youtube.com/watch?v=o2WlPUdrnKo">YOUTUBE-1</a>
+		<br>
+		<a href="https://www.youtube.com/watch?v=CJ4NUbqchZQ">YOUTUBE-2</a>
+		<p></p>
+
+		<p id="output"></p>
+		<p id="output2"></p>
+		<p id="output3"></p>
+		<p id="output4"></p>
+
+		<!-- <img src="..\MicrosoftTeams-image - Network Map.png" onload="hello()" > -->
+		<img src="JavaScript Common Errors and Tips.jpg" >
+
+		<br>
+
+		<!--
+		<button type="button" onclick="doClick('Button_1')">Button 1</button>&nbsp;
+		<button type="button" onclick="doClick('Button_2')">Button 2</button>&nbsp;
+		<button type="button" onclick="doClick('Button_3')">Button 3</button>&nbsp;
+		-->
+
+		<button type="button" id="Button_1" >Button 1</button>&nbsp;
+		<button type="button" id="Button_2" >Button 2</button>&nbsp;
+		<button type="button" id="Button_3" >Button 3</button>&nbsp;
+		<button type="button" id="Button_4" >Button 4</button>&nbsp;
+		<button type="button" id="Button_5" >Button 5</button>&nbsp;
+		<button type="button" id="Button_6" >Button 6</button>&nbsp;
+		<button type="button" id="Button_7" >Button 7</button>&nbsp;
+		<button type="button" id="Button_8" >Button 8</button>&nbsp;
+		<button type="button" id="Button_9" >Button 9</button>&nbsp;
+
+		<script>
+			window.onload = hello;
+			console.log("End of HTML");
+			var content = "";
+
+			function hello()
+			{
+				document.getElementById("output").textContent = "Hello World! Here I am!";
+				console.log("Loaded Everything");
+
+				document.getElementById("Button_1").addEventListener('click',doClick);	
+				document.getElementById("Button_1").addEventListener('click',odd);
+				document.getElementById("Button_1").addEventListener('click',prime);
+				document.getElementById("Button_2").addEventListener('click',doClick);	
+				document.getElementById("Button_2").addEventListener('click',even);				
+				document.getElementById("Button_3").addEventListener('click',doClick);
+				document.getElementById("Button_3").addEventListener('click',odd);
+				document.getElementById("Button_3").addEventListener('click',prime);
+				document.getElementById("Button_4").addEventListener('click',doClick);
+				document.getElementById("Button_4").addEventListener('click',even);
+				document.getElementById("Button_5").addEventListener('click',doClick);	
+				document.getElementById("Button_5").addEventListener('click',odd);	
+				document.getElementById("Button_5").addEventListener('click',prime);			
+				document.getElementById("Button_6").addEventListener('click',doClick);	
+				document.getElementById("Button_6").addEventListener('click',even);				
+				document.getElementById("Button_7").addEventListener('click',doClick);
+				document.getElementById("Button_7").addEventListener('click',odd);
+				document.getElementById("Button_7").addEventListener('click',prime);
+				document.getElementById("Button_8").addEventListener('click',doClick);		
+				document.getElementById("Button_8").addEventListener('click',even);			
+				document.getElementById("Button_9").addEventListener('click',doClick);
+				document.getElementById("Button_9").addEventListener('click',odd);
+
+			}
+
+			function goodMorning()
+			{		
+				document.getElementById("output2").textContent = "Good Morning!";
+			}
+
+			function doClick()
+			{		
+				content += " You clicked " + this.id;
+				document.getElementById("output4").textContent = content;
+			}
+
+			function even()
+			{
+				content += " which is an even number. ";
+				document.getElementById("output4").textContent = content;
+			}
+
+			function odd()
+			{
+				content += " which is an odd number. ";
+				document.getElementById("output4").textContent = content;
+			}
+
+			function prime()
+			{
+				content += this.id + " is also a prime number. ";
+				document.getElementById("output4").textContent = content;
+			}
+
+
+		</script>
+		<style>
+			img
+			{
+				width: 20%;
+				height: auto;
+			}
+		</style>
+	</body>
+</html>

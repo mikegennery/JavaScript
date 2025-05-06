@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Library</title>
+		<link rel="stylesheet" href="styles.css" >
+	</head>
+	<body>
+		<h1 class="title">Library for books</h1>
+
+		<div id="book">
+		<br>
+		<p>Name:   </p><p class="data" id="bookName"></p>
+		<p>Author: </p><p class="data" id="bookAuthor"></p>
+		<p>Type:   </p><p class="data" id="bookType"></p>
+		<p>Genre:  </p><p class="data" id="bookGenre"></p>
+		<p>Year:   </p><p class="data" id="bookYear"></p>
+		</div>
+
+		<script>
+/*
+
+https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+https://developer.mozilla.org/en-US/docs/Web/API/Document/prepend
+https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild
+https://developer.mozilla.org/en-US/docs/Web/API/Node/replaceChild
+https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore
+https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentElement
+
+var is globally scoped
+let and scope is locally scoped
+
+*/
+
+
+class Book
+{
+	constructor
+	(
+		name,
+		author,
+		type, // Fiction or Non-Fiction
+		genre,
+		year // Year of publication
+	)
+	{
+		this.name = name;
+		this.author = author;
+		this.type = type; // Fiction or Non-Fiction
+		this.genre = genre;
+		this.year = year; // Year of publication
+	}
+
+	displayBook()
+	{
+		console.log(		
+			this.name,
+			this.author,
+			this.type, // Fiction or Non-Fiction
+			this.genre,
+			this.year // Year of publication
+			);
+
+		bookName.innerHTML = Catch22.name;
+		bookAuthor.innerHTML = Catch22.author;
+		bookType.innerHTML = Catch22.type;
+		bookGenre.innerHTML = Catch22.genre;
+		bookYear.innerHTML = Catch22.year;
+
+	}
+}
+
+		const Catch22 = new Book("Catch-22","Joseph Heller","Fiction","Drama",1961);
+
+		Catch22.displayBook();
+
+		document.querySelectorAll("p").forEach(item => item.style.color= "darkBlue");
+		document.querySelectorAll("p:last-child").forEach(item => item.style.color= "red");
+		document.querySelectorAll("p").forEach(item => item.style.backgroundColor= "lightGrey");
+		document.querySelector(".title").style.backgroundColor = "rebeccapurple";
+		document.querySelector(".title").style.color = "white";
+
+		</script>
+	</body>
+
+</html>
